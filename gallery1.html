@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Gallery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="gallery1.css">
+</head>
+
+<body>
+
+<!-- ================= TITLE ================= -->
+<section class="gallery-title">
+  <h1 id="gallery-title">Gallery</h1>
+
+  <div class="back-button">
+    <a href="photography.html">← Back to Photography Styles</a>
+  </div>
+</section>
+
+<!-- ================= GRID ================= -->
+<section class="gallery-grid" id="gallery"></section>
+
+<!-- ================= LIGHTBOX ================= -->
+<div id="lightbox" class="lightbox">
+  <span class="close">&times;</span>
+  <img id="lightbox-img">
+  <span class="prev">&#10094;</span>
+  <span class="next">&#10095;</span>
+</div>
+
+<script>
+/* =========================================
+   READ STYLE FROM URL (INDEX uses ?type, Photography uses ?style)
+========================================= */
+const params = new URLSearchParams(window.location.search);
+const style = (params.get("style") || params.get("type") || "").trim();
+
+/* =========================================
+   DISPLAY TITLES (INDEX + PHOTOGRAPHY)
+========================================= */
+const displayNames = {
+  "Portrait": "Animal Portrait",
+  "Environment": "Animal in Environment",
+  "Macro": "Macro Photography",
+  "Night": "Night & Long Exposure",
+  "Action": "Action High Speed",
+  "Silhouette": "Silhouette Photography",
+  "Black and white": "Black & White",
+  "Reflection": "Reflections",
+  "Drone": "Drone Shots",
+  "Trap": "Camera Trap"
+};
+
+/* =========================================
+   IMAGE FOLDERS
+   (ORDNERSTRUKTUR WIE AUF DEINEM SCREENSHOT)
+========================================= */
+const images = {
+  "Portrait": [
+    "Style/Portrait/1.jpg"
+  ],
+  "Environment": [
+    "Style/Environment/1.jpg"
+  ],
+  "Macro": [
+    "Style/Macro/1.jpg"
+  ],
+  "Night": [
+    "Style/Night/1.jpg"
+  ],
+  "Action": [
+    "Style/Action/1.jpg"
+  ],
+  "Silhouette": [
+    "Style/Silhouette/1.jpg"
+  ],
+  "Black and white": [
+    "Style/Black and white/1.jpg"
+  ],
+  "Reflection": [
+    "Style/Reflection/1.JPG"
+  ],
+  "Drone": [
+    "Style/Drone/1.jpg"
+  ],
+  "Trap": [
+    "Style/Trap/1.jpg"
+  ]
+};
+
+/* =========================================
+   SET TITLE
+========================================= */
+document.getElementById("gallery-title").textContent =
+  displayNames[style] || "Gallery";
+
+/* =========================================
+   LOAD IMAGES
+========================================= */
+const container = document.getElementById("gallery");
+
+if (images[style]) {
+  images[style].forEach(src => {
+    const img = document.createElement("img");
+    img.src = src;
+    img.loading = "lazy";
+    container.appendChild(img);
+  });
+} else {
+  container.innerHTML = "<p style='text-align:center'>No images found.</p>";
+}
+
+/* =========================================
+   LIGHTBOX
+========================================= */
+const galleryImgs = document.querySelectorAll("#gallery img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const closeBtn = document.querySelector(".close");
+const nextBtn = document.querySelector(".next");
+const prevBtn = document.querySelector(".prev");
+
+let index = 0;
+
+galleryImgs.forEach((img, i) => {
+  img.addEventListener("click", () => {
+    index = i;
+    open();
+  });
+});
+
+function open() {
+  lightbox.style.display = "flex";
+  lightboxImg.src = galleryImgs[index].src;
+}
+
+function close() {
+  lightbox.style.display = "none";
+}
+
+closeBtn.onclick = close;
+
+nextBtn.onclick = () => {
+  index = (index + 1) % galleryImgs.length;
+  open();
+};
+
+prevBtn.onclick = () => {
+  index = (index - 1 + galleryImgs.length) % galleryImgs.length;
+  open();
+};
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") close();
+});
+</script>
+
+</body>
+</html>

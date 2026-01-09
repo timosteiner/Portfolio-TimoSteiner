@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="gallery.css" />
+</head>
+<body>
+
+  <!-- Titel -->
+  <section class="gallery-title">
+    <h1 id="animal-name"></h1>
+
+    <div class="back-button">
+      <a href="visuals.html">← Back to Visuals</a>
+    </div>
+  </section>
+
+  <!-- Grid -->
+  <section class="gallery-grid" id="gallery"></section>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <img id="lightbox-img" src="" alt="">
+    <span class="prev">&#10094;</span>
+    <span class="next">&#10095;</span>
+  </div>
+
+  <script>
+    // ✅ Tier aus URL lesen (z. B. gallery.html?animal=Lion)
+    const params = new URLSearchParams(window.location.search);
+    const rawAnimal = params.get("animal");
+
+    // ✅ Normalisierung: macht URL robust (lion / Lion / lilac-breasted-roller / etc.)
+    function normalizeKey(str) {
+      return (str || "")
+        .toLowerCase()
+        .replace(/-/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+    }
+
+    // ✅ DISPLAY-NAMES (sichtbar für User) — Keys sind die "internen" Tiere (images-Keys)
+    const displayNames = {
+      "African Goshawk": "African goshawk",
+      "Banded Mongoose": "Banded mongoose",
+      "Black Rhino": "Black hooked-lip rhino",
+      "Black-Backed Jackal": "Black-backed jackal",
+      "Blue Wildebeest": "Blue wildebeest",
+      "Blue-cheeked Bee Eater": "Blue-cheeked bee-eater",
+      "Blue-headed Tree Agama": "Blue-headed tree agama",
+      "Brown Hyena": "Brown hyena",
+      "Burchell's Zebra": "Burchell's zebra",
+      "Bushbuck": "Bushbuck",
+      "Cape Buffalo": "African cape buffalo",
+      "Chacma Baboon": "Chacma baboon",
+      "Cheetah": "Cheetah",
+      "Crocodile": "Nile crocodile",
+      "Dwarf Mongoose": "Dwarf mongoose",
+      "Elephant": "African elephant",
+      "European Bee Eater": "European bee-eater",
+      "Flap-Necked Chameleon": "Flap-necked chameleon",
+      "Giraffe": "Giraffe",
+      "Golden Orb-Web Spider": "Golden orb-web spider",
+      "Greater Eland": "Greater eland",
+      "Guineafowl": "Guineafowl",
+      "Impala": "Impala",
+      "Klipspringer": "Klipspringer",
+      "Kori Bustard": "Kori bustard",
+      "Leopard": "African leopard",
+      "Leopard Tortoise": "Leopard tortoise",
+      "Lilac-Breasted Roller": "Lilac-breasted roller",
+      "Lion": "African lion",
+      "Mantis": "Mantis",
+      "Marabou": "Marabou stork",
+      "Masked Weaver": "Southern masked-weaver",
+      "Oryx": "Oryx",
+      "Ostrich": "Ostrich",
+      "Plum-Coloured Starling": "Plum-coloured starling",
+      "Purple Roller": "Purple roller",
+      "Red Hartebeest": "Red hartebeest",
+      "Rock Dassie": "Rock dassie",
+      "Rock Monitor": "Rock monitor",
+      "S. White-Crowned Shrike": "Southern white-crowned shrike",
+      "Scrub Hare": "Scrub hare",
+      "Shaft-Tailed Whydah": "Shaft-tailed whydah",
+      "Spotted Hyena": "Spotted hyena",
+      "Springbok": "Springbok",
+      "Steenbuck": "Steenbuck",
+      "Tsessebe": "Tsessebe",
+      "Vervet Monkey": "Vervet monkey",
+      "Warthog": "Warthog",
+      "Waterbuck": "Waterbuck",
+      "Water Monitor": "Water monitor",
+      "White Rhino": "White square-lipped rhino",
+      "Wild Dog": "African wild dog",
+      "Yellow Hornbill": "Yellow-billed hornbill"
+    };
+
+    // ✅ ALLE ORDNER — Bilder (JPG/JPEG Schreibweise wie von dir vorgegeben)
+    const images = {
+      "African Goshawk": ["animals/African Goshawk/1.JPG"],
+
+      "Banded Mongoose": [
+        "animals/Banded Mongoose/1.jpg",
+        "animals/Banded Mongoose/2.jpg",
+        "animals/Banded Mongoose/3.jpg"
+      ],
+
+      "Black Rhino": [
+        "animals/Black Rhino/1.jpg",
+        "animals/Black Rhino/2.jpg",
+        "animals/Black Rhino/3.jpg",
+        "animals/Black Rhino/4.JPG",
+        "animals/Black Rhino/5.jpg",
+        "animals/Black Rhino/6.JPG",
+        "animals/Black Rhino/7.jpg",
+        "animals/Black Rhino/8.jpg",
+        "animals/Black Rhino/9.JPG",
+        "animals/Black Rhino/10.jpg",
+        "animals/Black Rhino/11.jpg",
+        "animals/Black Rhino/12.jpg",
+        "animals/Black Rhino/13.jpg",
+        "animals/Black Rhino/14.jpg",
+        "animals/Black Rhino/15.jpg",
+        "animals/Black Rhino/16.jpg",
+        "animals/Black Rhino/17.jpg",
+        "animals/Black Rhino/18.jpg",
+        "animals/Black Rhino/19.JPG",
+        "animals/Black Rhino/20.JPG",
+        "animals/Black Rhino/21.jpg",
+        "animals/Black Rhino/22.JPG",
+        "animals/Black Rhino/23.jpg",
+        "animals/Black Rhino/24.JPG",
+        "animals/Black Rhino/25.jpg"
+      ],
+
+      "Black-Backed Jackal": [
+        "animals/Black-Backed Jackal/1.jpg",
+        "animals/Black-Backed Jackal/2.jpg",
+        "animals/Black-Backed Jackal/3.jpg",
+        "animals/Black-Backed Jackal/4.jpg",
+        "animals/Black-Backed Jackal/5.jpg",
+        "animals/Black-Backed Jackal/6.jpg",
+        "animals/Black-Backed Jackal/7.jpg",
+        "animals/Black-Backed Jackal/8.jpg",
+        "animals/Black-Backed Jackal/9.jpg",
+        "animals/Black-Backed Jackal/10.jpg",
+        "animals/Black-Backed Jackal/11.jpg",
+        "animals/Black-Backed Jackal/12.jpg",
+        "animals/Black-Backed Jackal/13.jpg",
+        "animals/Black-Backed Jackal/14.jpg",
+        "animals/Black-Backed Jackal/15.jpg",
+        "animals/Black-Backed Jackal/16.jpg",
+        "animals/Black-Backed Jackal/17.jpg",
+        "animals/Black-Backed Jackal/18.jpg",
+        "animals/Black-Backed Jackal/19.jpg",
+        "animals/Black-Backed Jackal/20.jpg",
+        "animals/Black-Backed Jackal/21.jpg",
+        "animals/Black-Backed Jackal/22.jpg",
+        "animals/Black-Backed Jackal/23.jpg",
+        "animals/Black-Backed Jackal/24.jpg",
+        "animals/Black-Backed Jackal/25.jpg",
+        "animals/Black-Backed Jackal/26.jpg",
+        "animals/Black-Backed Jackal/27.jpg",
+        "animals/Black-Backed Jackal/28.jpg",
+        "animals/Black-Backed Jackal/29.jpg",
+        "animals/Black-Backed Jackal/30.jpg"
+      ],
+
+      "Blue Wildebeest": [
+        "animals/Blue Wildebeest/1.JPG",
+        "animals/Blue Wildebeest/2.jpg"
+      ],
+
+      "Blue-cheeked Bee Eater": [
+        "animals/Blue-cheeked Bee Eater/1.JPG",
+        "animals/Blue-cheeked Bee Eater/2.JPG"
+      ],
+
+      "Blue-headed Tree Agama": [
+        "animals/Blue-headed Tree Agama/1.jpg",
+        "animals/Blue-headed Tree Agama/2.jpg",
+        "animals/Blue-headed Tree Agama/3.jpg"
+      ],
+
+      "Brown Hyena": [
+        "animals/Brown Hyena/1.jpg",
+        "animals/Brown Hyena/2.jpg",
+        "animals/Brown Hyena/3.jpg",
+        "animals/Brown Hyena/4.jpg"
+      ],
+
+      "Burchell's Zebra": [
+        "animals/Burchell's Zebra/1.jpg",
+        "animals/Burchell's Zebra/2.jpg",
+        "animals/Burchell's Zebra/3.JPG",
+        "animals/Burchell's Zebra/4.jpg",
+        "animals/Burchell's Zebra/5.jpg",
+        "animals/Burchell's Zebra/6.JPG",
+        "animals/Burchell's Zebra/7.JPG",
+        "animals/Burchell's Zebra/8.JPG",
+        "animals/Burchell's Zebra/9.jpg"
+      ],
+
+      "Bushbuck": ["animals/Bushbuck/1.jpg"],
+
+      "Cape Buffalo": [
+        "animals/Cape Buffalo/1.jpg",
+        "animals/Cape Buffalo/2.jpg",
+        "animals/Cape Buffalo/3.jpg",
+        "animals/Cape Buffalo/4.JPG",
+        "animals/Cape Buffalo/5.jpg",
+        "animals/Cape Buffalo/6.jpg",
+        "animals/Cape Buffalo/7.jpg",
+        "animals/Cape Buffalo/8.JPG",
+        "animals/Cape Buffalo/9.jpg",
+        "animals/Cape Buffalo/10.jpg",
+        "animals/Cape Buffalo/11.jpg",
+        "animals/Cape Buffalo/12.jpg",
+        "animals/Cape Buffalo/13.jpg"
+      ],
+
+      "Chacma Baboon": [
+        "animals/Chacma Baboon/1.jpg",
+        "animals/Chacma Baboon/2.JPG",
+        "animals/Chacma Baboon/3.jpg",
+        "animals/Chacma Baboon/4.jpg",
+        "animals/Chacma Baboon/5.jpg",
+        "animals/Chacma Baboon/6.jpg",
+        "animals/Chacma Baboon/7.JPG",
+        "animals/Chacma Baboon/8.jpg",
+        "animals/Chacma Baboon/9.jpg",
+        "animals/Chacma Baboon/10.jpg",
+        "animals/Chacma Baboon/11.jpg",
+        "animals/Chacma Baboon/12.jpg"
+      ],
+
+      "Cheetah": [
+        "animals/Cheetah/1.JPG",
+        "animals/Cheetah/2.jpg",
+        "animals/Cheetah/3.JPG",
+        "animals/Cheetah/4.jpg",
+        "animals/Cheetah/5.jpg",
+        "animals/Cheetah/6.jpg",
+        "animals/Cheetah/7.JPG",
+        "animals/Cheetah/8.JPG",
+        "animals/Cheetah/9.jpg",
+        "animals/Cheetah/10.JPG",
+        "animals/Cheetah/11.JPG",
+        "animals/Cheetah/13.jpg",
+        "animals/Cheetah/14.JPG",
+        "animals/Cheetah/15.jpg",
+        "animals/Cheetah/16.jpg",
+        "animals/Cheetah/17.JPG",
+        "animals/Cheetah/18.JPG",
+        "animals/Cheetah/19.jpg",
+        "animals/Cheetah/20.JPG",
+        "animals/Cheetah/21.JPG",
+        "animals/Cheetah/22.JPG",
+        "animals/Cheetah/23.JPG",
+        "animals/Cheetah/24.JPG",
+        "animals/Cheetah/25.jpg",
+        "animals/Cheetah/26.JPG"
+      ],
+
+      "Crocodile": [
+        "animals/Crocodile/1.JPG",
+        "animals/Crocodile/2.JPG",
+        "animals/Crocodile/3.JPG",
+        "animals/Crocodile/4.JPG",
+        "animals/Crocodile/5.JPG",
+        "animals/Crocodile/6.JPG",
+        "animals/Crocodile/7.JPG",
+        "animals/Crocodile/8.JPG",
+        "animals/Crocodile/9.JPG",
+        "animals/Crocodile/10.jpg",
+        "animals/Crocodile/11.jpg",
+        "animals/Crocodile/12.JPG"
+      ],
+
+      "Dwarf Mongoose": [
+        "animals/Dwarf Mongoose/1.jpg",
+        "animals/Dwarf Mongoose/2.jpg",
+        "animals/Dwarf Mongoose/3.jpg",
+        "animals/Dwarf Mongoose/4.jpg",
+        "animals/Dwarf Mongoose/5.jpg",
+        "animals/Dwarf Mongoose/6.jpg",
+        "animals/Dwarf Mongoose/7.jpg",
+        "animals/Dwarf Mongoose/8.jpg",
+        "animals/Dwarf Mongoose/9.jpg",
+        "animals/Dwarf Mongoose/10.jpg",
+        "animals/Dwarf Mongoose/11.jpg"
+      ],
+
+      "Elephant": [
+        "animals/Elephant/1.jpg",
+        "animals/Elephant/2.jpg",
+        "animals/Elephant/3.jpg",
+        "animals/Elephant/4.jpg",
+        "animals/Elephant/5.jpg",
+        "animals/Elephant/6.JPG",
+        "animals/Elephant/7.jpg",
+        "animals/Elephant/8.JPG",
+        "animals/Elephant/9.jpg",
+        "animals/Elephant/10.jpg",
+        "animals/Elephant/11.jpg",
+        "animals/Elephant/12.JPG",
+        "animals/Elephant/13.jpg",
+        "animals/Elephant/14.jpg",
+        "animals/Elephant/15.jpg",
+        "animals/Elephant/16.jpg",
+        "animals/Elephant/17.JPG",
+        "animals/Elephant/18.jpg",
+        "animals/Elephant/19.JPG",
+        "animals/Elephant/20.jpg",
+        "animals/Elephant/21.jpg",
+        "animals/Elephant/22.JPG",
+        "animals/Elephant/23.JPG",
+        "animals/Elephant/24.JPG"
+      ],
+
+      "European Bee Eater": [
+        "animals/European Bee Eater/1.jpg",
+        "animals/European Bee Eater/2.jpg",
+        "animals/European Bee Eater/3.JPG",
+        "animals/European Bee Eater/4.jpg",
+        "animals/European Bee Eater/5.jpg",
+        "animals/European Bee Eater/6.jpg",
+        "animals/European Bee Eater/7.jpg",
+        "animals/European Bee Eater/8.jpg",
+        "animals/European Bee Eater/9.jpg",
+        "animals/European Bee Eater/10.jpg"
+      ],
+
+      "Flap-Necked Chameleon": [
+        "animals/Flap-Necked Chameleon/1.jpg",
+        "animals/Flap-Necked Chameleon/2.jpg"
+      ],
+
+      "Giraffe": [
+        "animals/Giraffe/1.jpg",
+        "animals/Giraffe/2.jpg",
+        "animals/Giraffe/3.jpg",
+        "animals/Giraffe/4.jpg",
+        "animals/Giraffe/5.JPG",
+        "animals/Giraffe/6.jpg",
+        "animals/Giraffe/7.jpg",
+        "animals/Giraffe/8.jpg",
+        "animals/Giraffe/9.JPG",
+        "animals/Giraffe/10.jpg",
+        "animals/Giraffe/11.jpg",
+        "animals/Giraffe/12.jpg"
+      ],
+
+      "Golden Orb-Web Spider": ["animals/Golden Orb-Web Spider/1.jpg"],
+      "Greater Eland": ["animals/Greater Eland/1.jpg"],
+      "Guineafowl": ["animals/Guineafowl/1.jpg"],
+
+      "Impala": [
+        "animals/Impala/1.jpg",
+        "animals/Impala/2.jpg",
+        "animals/Impala/3.jpg",
+        "animals/Impala/4.jpg",
+        "animals/Impala/5.jpg",
+        "animals/Impala/6.jpg",
+        "animals/Impala/7.jpg",
+        "animals/Impala/8.jpg",
+        "animals/Impala/9.jpg",
+        "animals/Impala/10.jpg"
+      ],
+
+      "Klipspringer": ["animals/Klipspringer/1.jpg"],
+
+      "Kori Bustard": [
+        "animals/Kori Bustard/1.jpg",
+        "animals/Kori Bustard/2.jpg",
+        "animals/Kori Bustard/3.jpg",
+        "animals/Kori Bustard/4.jpg"
+      ],
+
+      "Leopard": [
+        "animals/Leopard/leopard-1.jpg",
+        "animals/Leopard/leopard-2.jpg",
+        "animals/Leopard/leopard-3.jpg",
+        "animals/Leopard/leopard-4.jpg",
+        "animals/Leopard/leopard-5.jpg",
+        "animals/Leopard/leopard-6.jpg",
+        "animals/Leopard/leopard-7.jpg",
+        "animals/Leopard/leopard-8.jpg",
+        "animals/Leopard/leopard-9.jpg",
+        "animals/Leopard/10.jpg",
+      ],
+
+      "Leopard Tortoise": ["animals/Leopard Tortoise/1.jpg"],
+
+      "Lilac-Breasted Roller": [
+        "animals/Lilac-Breasted Roller/1.jpg",
+        "animals/Lilac-Breasted Roller/2.JPG",
+        "animals/Lilac-Breasted Roller/3.jpg",
+        "animals/Lilac-Breasted Roller/4.JPG",
+        "animals/Lilac-Breasted Roller/5.JPG",
+        "animals/Lilac-Breasted Roller/6.JPG",
+        "animals/Lilac-Breasted Roller/7.jpg"
+      ],
+
+      "Lion": [
+        "animals/Lion/1.jpg",
+        "animals/Lion/2.jpg",
+        "animals/Lion/3.JPG",
+        "animals/Lion/4.JPG",
+        "animals/Lion/5.JPG",
+        "animals/Lion/6.jpg",
+        "animals/Lion/7.jpg",
+        "animals/Lion/8.jpg",
+        "animals/Lion/9.jpg",
+        "animals/Lion/10.jpg",
+        "animals/Lion/11.jpg",
+        "animals/Lion/12.jpg",
+        "animals/Lion/13.jpg",
+        "animals/Lion/14.jpg",
+        "animals/Lion/15.jpg",
+        "animals/Lion/16.JPG",
+        "animals/Lion/17.JPG",
+        "animals/Lion/18.JPG",
+        "animals/Lion/19.JPG",
+        "animals/Lion/20.jpg",
+        "animals/Lion/21.jpg",
+        "animals/Lion/22.jpg",
+        "animals/Lion/23.jpg",
+        "animals/Lion/24.jpg",
+        "animals/Lion/25.JPG",
+        "animals/Lion/26.JPG",
+        "animals/Lion/27.JPG",
+        "animals/Lion/28.JPG",
+        "animals/Lion/29.JPG",
+        "animals/Lion/30.JPG",
+        "animals/Lion/31.jpg",
+        "animals/Lion/32.jpg",
+        "animals/Lion/33.jpg",
+        "animals/Lion/34.jpg",
+        "animals/Lion/35.jpg",
+        "animals/Lion/36.jpg",
+        "animals/Lion/37.jpg",
+        "animals/Lion/38.jpg",
+        "animals/Lion/39.jpg",
+        "animals/Lion/40.jpg"
+      ],
+
+      "Mantis": ["animals/Mantis/1.jpg"],
+
+      "Marabou": [
+        "animals/Marabou/1.jpg",
+        "animals/Marabou/2.jpg"
+      ],
+
+      "Masked Weaver": [
+        "animals/Masked Weaver/1.jpg",
+        "animals/Masked Weaver/2.jpg",
+        "animals/Masked Weaver/3.jpg",
+        "animals/Masked Weaver/4.jpg",
+        "animals/Masked Weaver/5.jpg",
+        "animals/Masked Weaver/6.jpg",
+        "animals/Masked Weaver/7.jpg",
+        "animals/Masked Weaver/8.jpg",
+        "animals/Masked Weaver/9.jpg",
+        "animals/Masked Weaver/10.jpg",
+        "animals/Masked Weaver/11.jpg",
+        "animals/Masked Weaver/12.jpg",
+        "animals/Masked Weaver/13.jpg"
+      ],
+
+      "Oryx": ["animals/Oryx/1.jpg"],
+
+      "Ostrich": [
+        "animals/Ostrich/1.jpg",
+        "animals/Ostrich/2.jpg",
+        "animals/Ostrich/3.JPG",
+        "animals/Ostrich/4.jpg",
+        "animals/Ostrich/5.JPG"
+      ],
+
+      "Plum-Coloured Starling": [
+        "animals/Plum-Coloured Starling/1.JPG",
+        "animals/Plum-Coloured Starling/2.JPG"
+      ],
+
+      "Purple Roller": [
+        "animals/Purple Roller/1.JPG",
+        "animals/Purple Roller/2.jpg"
+      ],
+
+      "Red Hartebeest": [
+        "animals/Red Hartebeest/1.JPG",
+        "animals/Red Hartebeest/2.jpg",
+        "animals/Red Hartebeest/3.JPG",
+        "animals/Red Hartebeest/4.jpg",
+        "animals/Red Hartebeest/5.jpg",
+        "animals/Red Hartebeest/6.jpg",
+        "animals/Red Hartebeest/7.jpg"
+      ],
+
+      "Rock Dassie": [
+        "animals/Rock Dassie/1.jpg",
+        "animals/Rock Dassie/2.jpg",
+        "animals/Rock Dassie/3.jpg"
+      ],
+
+      "Rock Monitor": [
+        "animals/Rock Monitor/1.jpg",
+        "animals/Rock Monitor/2.jpg",
+        "animals/Rock Monitor/3.jpg",
+        "animals/Rock Monitor/4.jpg"
+      ],
+
+      "S. White-Crowned Shrike": ["animals/S. White-Crowned Shrike/1.jpg"],
+
+      "Scrub Hare": [
+        "animals/Scrub Hare/1.jpg",
+        "animals/Scrub Hare/2.jpg"
+      ],
+
+      "Shaft-Tailed Whydah": ["animals/Shaft-Tailed Whydah/1.jpg"],
+
+      "Spotted Hyena": [
+        "animals/Spotted Hyena/1.jpg",
+        "animals/Spotted Hyena/2.jpg",
+        "animals/Spotted Hyena/3.jpg",
+        "animals/Spotted Hyena/4.jpg",
+        "animals/Spotted Hyena/5.jpg",
+        "animals/Spotted Hyena/6.jpg",
+        "animals/Spotted Hyena/7.jpg",
+        "animals/Spotted Hyena/8.jpg",
+        "animals/Spotted Hyena/9.jpg",
+        "animals/Spotted Hyena/10.jpg",
+        "animals/Spotted Hyena/11.jpg",
+        "animals/Spotted Hyena/12.jpg",
+        "animals/Spotted Hyena/13.jpg",
+        "animals/Spotted Hyena/14.jpg",
+        "animals/Spotted Hyena/15.jpg",
+        "animals/Spotted Hyena/16.jpg",
+        "animals/Spotted Hyena/17.jpg",
+        "animals/Spotted Hyena/18.jpg"
+      ],
+
+      "Springbok": [
+        "animals/Springbok/1.jpg",
+        "animals/Springbok/2.jpg",
+        "animals/Springbok/3.jpg",
+        "animals/Springbok/4.jpg",
+        "animals/Springbok/5.JPG",
+        "animals/Springbok/6.jpg"
+      ],
+
+      "Steenbuck": [
+        "animals/Steenbuck/1.jpg",
+        "animals/Steenbuck/2.jpg"
+      ],
+
+      "Tsessebe": [
+        "animals/Tsessebe/1.jpg",
+        "animals/Tsessebe/2.jpg",
+        "animals/Tsessebe/3.jpg",
+        "animals/Tsessebe/4.jpg"
+      ],
+
+      "Vervet Monkey": [
+        "animals/Vervet Monkey/1.JPG",
+        "animals/Vervet Monkey/2.JPG",
+        "animals/Vervet Monkey/3.jpg",
+        "animals/Vervet Monkey/4.jpg",
+        "animals/Vervet Monkey/5.jpg",
+        "animals/Vervet Monkey/6.jpg",
+        "animals/Vervet Monkey/7.JPG",
+        "animals/Vervet Monkey/8.JPG",
+        "animals/Vervet Monkey/9.JPG",
+        "animals/Vervet Monkey/10.jpg",
+        "animals/Vervet Monkey/11.JPG",
+        "animals/Vervet Monkey/12.jpg",
+        "animals/Vervet Monkey/13.JPG",
+        "animals/Vervet Monkey/14.JPG",
+        "animals/Vervet Monkey/15.jpg",
+        "animals/Vervet Monkey/16.jpg"
+      ],
+
+      "Warthog": [
+        "animals/Warthog/1.jpg",
+        "animals/Warthog/2.jpg",
+        "animals/Warthog/3.jpg",
+        "animals/Warthog/4.jpg",
+        "animals/Warthog/5.jpg"
+      ],
+
+      "Waterbuck": [
+        "animals/Waterbuck/1.jpg",
+        "animals/Waterbuck/2.jpg",
+        "animals/Waterbuck/3.jpg",
+        "animals/Waterbuck/4.jpg",
+        "animals/Waterbuck/5.jpg",
+        "animals/Waterbuck/6.jpg",
+        "animals/Waterbuck/7.jpg",
+        "animals/Waterbuck/8.jpg",
+        "animals/Waterbuck/9.jpg",
+        "animals/Waterbuck/10.jpg",
+        "animals/Waterbuck/11.jpg",
+        "animals/Waterbuck/12.jpg",
+        "animals/Waterbuck/13.jpg",
+        "animals/Waterbuck/14.jpg",
+        "animals/Waterbuck/15.jpg",
+        "animals/Waterbuck/16.jpg",
+        "animals/Waterbuck/17.jpg",
+        "animals/Waterbuck/18.jpg",
+        "animals/Waterbuck/19.jpg",
+        "animals/Waterbuck/20.jpg",
+        "animals/Waterbuck/21.jpg"
+      ],
+
+      "Water Monitor": [
+        "animals/Water Monitor/1.jpg",
+        "animals/Water Monitor/2.jpg",
+        "animals/Water Monitor/3.jpg",
+        "animals/Water Monitor/4.jpg"
+      ],
+
+      "White Rhino": [
+        "animals/White Rhino/1.jpg",
+        "animals/White Rhino/2.jpg",
+        "animals/White Rhino/3.jpg",
+        "animals/White Rhino/4.jpg",
+        "animals/White Rhino/5.jpg",
+        "animals/White Rhino/6.jpg",
+        "animals/White Rhino/7.jpg",
+        "animals/White Rhino/8.JPG",
+        "animals/White Rhino/9.jpg",
+        "animals/White Rhino/10.jpg",
+        "animals/White Rhino/11.jpg"
+      ],
+
+      "Yellow Hornbill": [
+        "animals/Yellow Hornbill/1.jpg",
+        "animals/Yellow Hornbill/2.jpg"
+      ],
+
+      "Wild Dog": [
+        "animals/Wild Dog/1.JPG",
+        "animals/Wild Dog/2.JPG",
+        "animals/Wild Dog/3.JPG",
+        "animals/Wild Dog/4.JPG",
+        "animals/Wild Dog/5.JPG",
+        "animals/Wild Dog/6.JPG",
+        "animals/Wild Dog/7.JPG",
+        "animals/Wild Dog/8.JPG",
+        "animals/Wild Dog/9.JPG",
+        "animals/Wild Dog/10.JPG",
+        "animals/Wild Dog/11.JPG",
+        "animals/Wild Dog/12.JPG",
+        "animals/Wild Dog/13.JPG",
+        "animals/Wild Dog/14.JPG",
+        "animals/Wild Dog/15.JPG",
+        "animals/Wild Dog/16.JPG",
+        "animals/Wild Dog/17.JPG",
+        "animals/Wild Dog/18.JPG",
+        "animals/Wild Dog/19.JPG",
+        "animals/Wild Dog/20.JPG",
+        "animals/Wild Dog/21.JPG",
+        "animals/Wild Dog/22.JPG",
+        "animals/Wild Dog/23.JPG",
+        "animals/Wild Dog/24.JPG",
+        "animals/Wild Dog/25.JPG",
+        "animals/Wild Dog/26.jpg"
+      ]
+    };
+
+    // ✅ Schlüssel passend zur URL finden (robust)
+    const animalKey = Object.keys(images).find(
+      key => normalizeKey(key) === normalizeKey(rawAnimal)
+    );
+
+    // ✅ Titel setzen
+    document.getElementById("animal-name").textContent =
+      displayNames[animalKey] || animalKey || "Gallery";
+
+    // ✅ Bilder rendern
+    const container = document.getElementById("gallery");
+
+    if (animalKey && images[animalKey]) {
+      images[animalKey].forEach(src => {
+        const img = document.createElement("img");
+        img.src = src;
+        img.loading = "lazy";
+        container.appendChild(img);
+      });
+    } else {
+      container.innerHTML = "<p style='text-align:center'>No images found.</p>";
+    }
+
+    // ✅ LIGHTBOX LOGIK
+    const galleryImages = document.querySelectorAll('#gallery img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.querySelector('.close');
+    const nextBtn = document.querySelector('.next');
+    const prevBtn = document.querySelector('.prev');
+
+    let currentIndex = 0;
+
+    galleryImages.forEach((img, index) => {
+      img.addEventListener('click', () => {
+        currentIndex = index;
+        openLightbox();
+      });
+    });
+
+    function openLightbox() {
+      lightbox.style.display = 'flex';
+      lightboxImg.src = galleryImages[currentIndex].src;
+    }
+
+    function closeLightbox() {
+      lightbox.style.display = 'none';
+    }
+
+    closeBtn.addEventListener('click', closeLightbox);
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % galleryImages.length;
+      openLightbox();
+    });
+
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+      openLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+
+</body>
+</html>
