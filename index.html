@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timo Alejandro Steiner</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  
+  <!-- Meta Description -->
+  <meta name="description" content="Wildlife & Nature Visuals by Timo Alejandro Steiner — photography, video, and creative content from the African wilderness.">
+
+  <!-- Open Graph / Social Media Preview Tags (optional) -->
+  <meta property="og:title" content="Timo Alejandro Steiner">
+  <meta property="og:description" content="Wildlife & Nature Visuals — photography, video, and creative content from the African wilderness.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://timoalejandrosteiner.com/">
+  <meta property="og:image" content="https://timoalejandrosteiner.com/7d428427-a38f-4090-9970-3bd03c3e9059.png">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Hintergrundvideo -->
+  <video id="bg-video" autoplay loop muted playsinline>
+    <source src="Madikwe.mp4" type="video/mp4">
+    Dein Browser unterstützt keine Videos.
+  </video>
+
+  <!-- Audio Toggle Button -->
+  <button id="sound-toggle">🔇</button>
+
+  <script>
+    const bgVideo = document.getElementById("bg-video");
+
+    bgVideo.addEventListener("loadedmetadata", () => {
+      bgVideo.currentTime = 0;
+      bgVideo.play().catch(() => {});
+    });
+
+    bgVideo.addEventListener("timeupdate", () => {
+      if (bgVideo.currentTime >= bgVideo.duration - 0.2) {
+        bgVideo.currentTime = 0;
+        bgVideo.play();
+      }
+    });
+
+    bgVideo.addEventListener("stalled", () => {
+      bgVideo.play();
+    });
+  </script>
+
+<header>
+  <div class="logo">
+    <img src="7d428427-a38f-4090-9970-3bd03c3e9059.png" alt="Timo Alejandro Steiner Logo">
+  </div>
+
+ <nav class="main-nav">
+  <ul class="nav-links">
+    <li><a href="index.html">HOME 🏠</a></li>
+    <li><a href="about.html">ABOUT 🙋🏻‍♂️</a></li>
+    <li><a href="visuals.html">VISUALS 🎞️</a></li>
+    <li><a href="services.html">SERVICES 🖥️</a></li>
+    <li><a href="contact.html">CONTACT ✉️</a></li>
+  </ul>
+
+  <!-- MEGA MENU (eine Einheit) -->
+ <div class="mega-menu">
+  <div class="mega-col mega-image">
+    <img src="header.png" alt="Mega Menu Visual">
+  </div>
+
+  <div class="mega-col">
+    <a href="about.html">About Me</a>
+    <a href="work.html">Work Experience</a>
+    <a href="university.html">University Background</a>
+    <a href="equipment.html">Equipment</a>
+  </div>
+
+  <div class="mega-col">
+    <a href="visuals.html">African Animals</a>
+    <a href="photography.html">Photography Styles</a>
+    <a href="places.html">Places</a>
+    <a href="vlog.html">Vlog</a>
+  </div>
+
+  <div class="mega-col">
+    <a href="content.html">Content Production</a>
+    <a href="social.html">Social Media Management</a>
+    <a href="web.html">Websites / Apps</a>
+    <a href="3d.html">3D Animation</a>
+    <a href="commercial.html">Commercial / Marketing</a>
+    <a href="prints.html">Prints & Licensing</a>
+    <a href="workshop.html">Workshops / Coaching</a>
+  </div>
+
+  <div class="mega-col empty"></div>
+</div>
+
+</nav>
+
+</header>
+
+<section class="hero-space"></section>
+
+<!-- Galerie (OBEN) -->
+<section class="gallery-section">
+  <div class="slider-container" id="slider1">
+
+<div class="slide">
+  <a href="gallery1.html?type=Portrait">
+    <img fetchpriority="high" decoding="async" loading="lazy" width="1600" height="900" src="FS1.jpg" alt="Animal Portrait">
+    <div class="overlay">Animal Portrait</div>
+  </a>
+</div>
+
+<div class="slide">
+  <a href="gallery1.html?type=Trap">
+    <img decoding="async" width="1600" height="900" src="FS10.jpg" alt="Camera Trap">
+    <div class="overlay">Camera Trap</div>
+  </a>
+</div>
+
+<div class="slide">
+  <a href="gallery1.html?type=Drone">
+    <img decoding="async" loading="lazy" width="1600" height="900" src="FS9.png" alt="Drone Shots">
+    <div class="overlay">Drone Shots</div>
+  </a>
+</div>
+
+<div class="slide">
+  <a href="gallery1.html?type=Reflection">
+    <img decoding="async" loading="lazy" width="1600" height="900" src="FS8.jpg" alt="Reflections">
+    <div class="overlay">Reflections</div>
+  </a>
+</div>
+
+<div class="slide">
+  <a href="gallery1.html?type=Black%20and%20white">
+    <img decoding="async" loading="lazy" width="1600" height="900" src="FS7.jpg" alt="Black & White">
+    <div class="overlay">Black & White</div>
+  </a>
+</div>
+
+<div class="slide">
+  <a href="gallery1.html?type=Silhouette">
+    <img decoding="async" loading="lazy" width="1600" height="900" src="FS6.jpg" alt="Silhouette Photography">
+    <div class="overlay">Silhouette Photography</div>
+  </a>
+</div>
+
+<div class="slide">
+  <a href="gallery1.html?type=Action">
+    <img decoding="async" loading="lazy" width="1600" height="900" src="FS5.jpg" alt="Action High Speed">
+    <div class="overlay">Action High Speed</div>
+  </a>
+</div>
+
+<div class="slide">
+  <a href="gallery1.html?type=Night">
+    <img decoding="async" width="1600" height="900" src="FS4.png" alt="Night & Long Exposure">
+    <div class="overlay">Night & Long Exposure</div>
+  </a>
+</div>
+
+<div class="slide">
+  <a href="gallery1.html?type=Macro">
+    <img decoding="async" width="1600" height="900" src="FS3.jpg" alt="Macro Photography">
+    <div class="overlay">Macro Photography</div>
+  </a>
+</div>
+
+<div class="slide">
+  <a href="gallery1.html?type=Environment">
+    <img decoding="async" width="1600" height="900" src="FS2.jpg" alt="Animal in Environment">
+    <div class="overlay">Animal in Environment</div>
+  </a>
+</div>
+
+  </div>
+</section>
+
+
+<!-- About & Vlog -->
+<section class="double-section">
+  <div class="double-box left-box">
+    <img decoding="async" loading="lazy" width="1600" height="1100" src="links.JPG" alt="About Me Bild">
+    <div class="overlay-content">
+      <p>Born in Buenos Aires, Argentina. Raised in Switzerland. And deeply passionate about the safaris of South Africa. These three places are the ones most closely connected to my life.</p>
+      <a href="about.html" class="btn">ABOUT ME</a>
+    </div>
+  </div>
+
+  <div class="double-box right-box">
+    <img decoding="async" loading="lazy" width="1600" height="1100" src="rechts.JPG" alt="Vlog Bild">
+    <div class="overlay-content">
+      <p>Immerse yourself in my ongoing video series straight from the heart of the wilderness. On my vlog, you'll regularly find new safari episodes that take you on exciting journeys and fascinating wildlife encounters.</p>
+      <a href="vlog.html" class="btn">VLOG</a>
+    </div>
+  </div>
+</section>
+
+<!-- Galerie (UNTEN – neue Leiste mit echten Bildern) -->
+<section class="gallery-section">
+  <div class="slider-container" id="slider2">
+
+    <div class="slide">
+      <a href="gallery.html?animal=Elephant">
+        <img fetchpriority="high" decoding="async" loading="lazy" width="1600" height="900" src="TA1.jpg" alt="African Elephant">
+        <div class="overlay">African Elephant</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Leopard">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA2.JPG" alt="African Leopard">
+        <div class="overlay">African Leopard</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Lion">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA3.jpg" alt="African Lion">
+        <div class="overlay">African Lion</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Burchell's%20Zebra">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA4.jpg" alt="Burchell's Zebra">
+        <div class="overlay">Burchell's Zebra</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Giraffe">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA5.jpg" alt="Giraffe">
+        <div class="overlay">Giraffe</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Black%20Rhino">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA6.jpg" alt="Black hooked-lip Rhino">
+        <div class="overlay">Black hooked-lip Rhino</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Wild%20Dog">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA7.JPG" alt="African Wild Dog">
+        <div class="overlay">African Wild Dog</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Crocodile">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA8.JPG" alt="Nile Crocodile">
+        <div class="overlay">Nile Crocodile</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Vervet%20Monkey">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA9.JPG" alt="Vervet Monkey">
+        <div class="overlay">Vervet Monkey</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Lilac-Breasted%20Roller">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA10.JPG" alt="Lilac-Breasted Roller">
+        <div class="overlay">Lilac-Breasted Roller</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Cape%20Buffalo">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA11.jpg" alt="African Cape Buffalo">
+        <div class="overlay">African Cape Buffalo</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Rock%20Monitor">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA12.jpg" alt="Rock Monitor">
+        <div class="overlay">Rock Monitor</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=White%20Rhino">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA13.jpg" alt="White square-lipped Rhino">
+        <div class="overlay">White square-lipped Rhino</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Oryx">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA14.jpg" alt="Oryx">
+        <div class="overlay">Oryx</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Blue-cheeked%20Bee%20Eater">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA16.JPG" alt="Blue-cheeked Bee Eater">
+        <div class="overlay">Blue-cheeked Bee Eater</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Waterbuck">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA15.JPG" alt="Waterbuck">
+        <div class="overlay">Waterbuck</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Flap-Necked%20Chameleon">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA17.jpg" alt="Flap-Necked Chameleon">
+        <div class="overlay">Flap-Necked Chameleon</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Steenbuck">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA18.jpg" alt="Steenbuck">
+        <div class="overlay">Steenbuck</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Rock%20Dassie">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA19.jpg" alt="Rock Dassie">
+        <div class="overlay">Rock Dassie</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Plum-Coloured%20Starling">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA37.JPG" alt="Plum coloured starling">
+        <div class="overlay">Plum coloured starling</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Cheetah">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA20.jpg" alt="Cheetah">
+        <div class="overlay">Cheetah</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Scrub%20Hare">
+        <img decoding="async" width="1600" height="900" src="TA48.jpg" alt="Scrub Hare">
+        <div class="overlay">Scrub Hare</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Warthog">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA21.jpg" alt="Warthog">
+        <div class="overlay">Warthog</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Black-Backed%20Jackal">
+        <img decoding="async" width="1600" height="900" src="TA22.jpg" alt="Black-Backed Jackal">
+        <div class="overlay">Black-Backed Jackal</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=African%20Goshawk">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA23.JPG" alt="African Goshawk">
+        <div class="overlay">African Goshawk</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Tsessebe">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA49.jpg" alt="Tsessebe">
+        <div class="overlay">Tsessebe</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Golden%20Orb-Web%20Spider">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA24.jpg" alt="Golden Orb-web Spider">
+        <div class="overlay">Golden Orb-web Spider</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Guineafowl">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA25.jpg" alt="Guineafowl">
+        <div class="overlay">Guineafowl</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Spotted%20Hyena">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA26.jpg" alt="Spotted Hyena">
+        <div class="overlay">Spotted Hyena</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Banded%20Mongoose">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA27.jpg" alt="Banded Mongoose">
+        <div class="overlay">Banded Mongoose</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Bushbuck">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA28.jpg" alt="Bushbuck">
+        <div class="overlay">Bushbuck</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Masked%20Weaver">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA46.jpg" alt="Southern Masked-weaver">
+        <div class="overlay">Southern Masked-weaver</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Chacma%20Baboon">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA29.jpg" alt="Chacma Baboon">
+        <div class="overlay">Chacma Baboon</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Impala">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA30.jpg" alt="Impala">
+        <div class="overlay">Impala</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Ostrich">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA36.jpg" alt="Ostrich">
+        <div class="overlay">Ostrich</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Klipspringer">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA31.jpg" alt="Klipspringer">
+        <div class="overlay">Klipspringer</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Water%20Monitor">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA50.jpg" alt="Water monitor">
+        <div class="overlay">Water Monitor</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Mantis">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA32.jpg" alt="Mantis">
+        <div class="overlay">Mantis</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Dwarf%20Mongoose">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA47.jpg" alt="Dwarf Mongoose">
+        <div class="overlay">Dwarf Mongoose</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Yellow%20Hornbill">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA53.jpg" alt="Yellow-billed Hornbill">
+        <div class="overlay">Yellow-billed Hornbill</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Springbok">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA33.jpg" alt="Springbok">
+        <div class="overlay">Springbok</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=European%20Bee%20Eater">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA38.JPG" alt="European Bee Eater">
+        <div class="overlay">European Bee Eater</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Blue%20Wildebeest">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA34.JPG" alt="Blue wildebeest">
+        <div class="overlay">Blue wildebeest</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Kori%20Bustard">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA52.jpg" alt="Kori Bustard">
+        <div class="overlay">Kori Bustard</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Brown%20Hyena">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA35.jpg" alt="Brown Hyena">
+        <div class="overlay">Brown Hyena</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Purple%20Roller">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA39.JPG" alt="Purple Roller">
+        <div class="overlay">Purple Roller</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Red%20Hartebeest">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA40.JPG" alt="Red Hartebeest">
+        <div class="overlay">Red Hartebeest</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Shaft-Tailed%20Whydah">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA41.jpg" alt="Shaft-tailed Whydah">
+        <div class="overlay">Shaft-tailed Whydah</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Leopard%20Tortoise">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA42.jpg" alt="Leopard tortoise">
+        <div class="overlay">Leopard tortoise</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Marabou">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA51.jpg" alt="Marabou Stork">
+        <div class="overlay">Marabou Stork</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Greater%20Eland">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA43.jpg" alt="Greater Eland">
+        <div class="overlay">Greater Eland</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=Blue-headed%20Tree%20Agama">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA44.jpg" alt="Blue-headed tree agama">
+        <div class="overlay">Blue-headed tree agama</div>
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="gallery.html?animal=S.%20White-Crowned%20Shrike">
+        <img decoding="async" loading="lazy" width="1600" height="900" src="TA45.jpg" alt="Southern white-crowned shrike">
+        <div class="overlay">Southern white-crowned shrike</div>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- Bottom Section -->
+<section class="bottom-section">
+  <div class="bottom-content">
+    <p>
+      Interested in taking your social media presence to the next level? I offer tailored social media management services that help you connect with your audience and grow your online impact. Check out how I can support your social media goals!
+    </p>
+    <a href="social.html" class="btn">SOCIAL MEDIA MANAGEMENT 📲</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-left">
+      <h3>TIMO ALEJANDRO STEINER</h3>
+      <p>Wildlife & Nature Visuals – Capturing the untamed beauty of Africa.</p>
+    </div>
+
+    <div class="footer-right">
+      <a href="https://www.youtube.com/@timoalejandrosteiner" target="_blank" class="social-link">Youtube</a>
+      <a href="https://www.tiktok.com/@madikwe.mp4" target="_blank" class="social-link">TikTok</a>
+      <a href="https://www.instagram.com/timosteiner10" target="_blank" class="social-link">Instagram</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Timo Alejandro Steiner. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  /* =========================
+     INFINITE SLIDERS – GEDREHT
+     (beide Richtungen invertiert)
+  ========================== */
+
+  // -------- Slider 1 (OBEN) -> JETZT ANDERSRUM --------
+  const slider1 = document.getElementById("slider1");
+  slider1.innerHTML += slider1.innerHTML;
+  const half1 = slider1.scrollWidth / 2;
+
+  let pos1 = half1;
+  const speed1 = 0.4;
+
+  function animateSlider1() {
+    pos1 -= speed1;               // 🔁 invertiert
+    if (pos1 <= 0) pos1 = half1;  // sauberer Loop
+    slider1.style.transform = `translateX(${-pos1}px)`;
+    requestAnimationFrame(animateSlider1);
+  }
+  animateSlider1();
+
+  // -------- Slider 2 (UNTEN) -> JETZT ANDERSRUM --------
+  const slider2 = document.getElementById("slider2");
+  slider2.innerHTML += slider2.innerHTML;
+  const half2 = slider2.scrollWidth / 2;
+
+  let pos2 = 0;
+  const speed2 = 0.35;
+
+  function animateSlider2() {
+    pos2 += speed2;               // 🔁 invertiert
+    if (pos2 >= half2) pos2 = 0;  // sauberer Loop
+    slider2.style.transform = `translateX(${-pos2}px)`;
+    requestAnimationFrame(animateSlider2);
+  }
+  animateSlider2();
+</script>
+
+
+
+
+<script>
+  const video = document.getElementById("bg-video");
+  const soundBtn = document.getElementById("sound-toggle");
+
+  soundBtn.addEventListener("click", () => {
+    if (video.muted) {
+      video.muted = false;
+      soundBtn.textContent = "🔊";
+    } else {
+      video.muted = true;
+      soundBtn.textContent = "🔇";
+    }
+  });
+</script>
+
+</body>
+</html>
