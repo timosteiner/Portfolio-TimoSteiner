@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D Animation</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="3d.css">
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <img src="7d428427-a38f-4090-9970-3bd03c3e9059.png" alt="Timo Alejandro Steiner Logo">
+  </div>
+
+ <nav class="main-nav">
+  <ul class="nav-links">
+    <li><a href="index.html">HOME 🏠</a></li>
+    <li><a href="about.html">ABOUT 🙋🏻‍♂️</a></li>
+    <li><a href="visuals.html">VISUALS 🎞️</a></li>
+    <li><a href="services.html">SERVICES 🖥️</a></li>
+    <li><a href="contact.html">CONTACT ✉️</a></li>
+  </ul>
+
+  <!-- MEGA MENU (eine Einheit) -->
+ <div class="mega-menu">
+  <div class="mega-col mega-image">
+    <img src="header.png" alt="Mega Menu Visual">
+  </div>
+
+  <div class="mega-col">
+    <a href="about.html">About Me</a>
+    <a href="work.html">Work Experience</a>
+    <a href="university.html">University Background</a>
+    <a href="equipment.html">Equipment</a>
+  </div>
+
+  <div class="mega-col">
+    <a href="visuals.html">African Animals</a>
+    <a href="photography.html">Photography Styles</a>
+    <a href="places.html">Places</a>
+    <a href="vlog.html">Vlog</a>
+  </div>
+
+  <div class="mega-col">
+    <a href="content.html">Content Production</a>
+    <a href="social.html">Social Media Management</a>
+    <a href="web.html">Websites / Apps</a>
+    <a href="3d.html">3D Animation</a>
+    <a href="commercial.html">Commercial / Marketing</a>
+    <a href="prints.html">Prints & Licensing</a>
+    <a href="workshop.html">Workshops / Coaching</a>
+  </div>
+
+  <div class="mega-col empty"></div>
+</div>
+
+</nav>
+
+</header>
+
+<!-- HERO -->
+<section class="service-hero">
+  <div class="service-hero-inner">
+    <div class="service-hero-kicker">SERVICES</div>
+    <h1>3D<br>ANIMATION</h1>
+    <p>
+      From immersive VR loops to real, printed products — 3D helps you visualize, prototype
+      and showcase ideas that don’t exist yet.
+    </p>
+
+    <div class="service-hero-actions">
+      <a href="#packages" class="btn btn-primary">View Packages</a>
+      <a href="contact.html" class="btn btn-ghost">Request a Quote</a>
+    </div>
+  </div>
+
+  <div class="service-hero-glow" aria-hidden="true"></div>
+</section>
+
+<!-- WHY -->
+<section class="service-section">
+  <div class="service-wrap">
+
+    <div class="service-intro">
+      <h2>Why 3D matters</h2>
+      <p>
+        3D gives you full control over lighting, perspective and motion — and it can go beyond visuals.
+        From immersive 360° content to physical prototypes printed with FDM, 3D turns ideas into something you can show (or hold).
+      </p>
+
+      <div class="fact-grid">
+        <div class="fact-card">
+          <h3>Immersive Visuals</h3>
+          <p>Create 360° scenes and loops that feel cinematic and modern.</p>
+        </div>
+        <div class="fact-card">
+          <h3>Real Prototypes</h3>
+          <p>Turn a 3D model into a physical object via FDM 3D printing.</p>
+        </div>
+        <div class="fact-card">
+          <h3>Flexible Output</h3>
+          <p>Videos, renders, assets or print-ready files — depending on your goal.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="service-section service-section-tight" id="packages">
+  <div class="service-wrap">
+
+    <div class="section-head">
+      <h2>Packages & Pricing</h2>
+      <p>
+        Choose a package depending on your goal — immersive VR content, a print-ready product,
+        or a custom 3D project with advanced features.
+      </p>
+    </div>
+
+    <div class="package-grid" id="packageGrid">
+
+      <!-- 1) 360 VR LOOP -->
+      <article class="package-card" data-package="vr360" data-price="690">
+        <div class="package-top">
+          <div class="package-badge">Starter</div>
+          <h3>360° VR Loop (Blender)</h3>
+          <p class="package-sub">Immersive 360° animation loop for VR, socials or showcases.</p>
+        </div>
+
+        <div class="package-price">
+          <span class="price">CHF 690</span>
+          <span class="price-note">from</span>
+        </div>
+
+        <ul class="package-list">
+          <li>5–8 sec 360° loop (equirectangular)</li>
+          <li>Scene setup in Blender (camera + motion)</li>
+          <li>Lighting + materials</li>
+          <li>Delivery: 4K (MP4) as standard</li>
+        </ul>
+
+        <div class="package-actions">
+          <button class="btn btn-primary package-select">Select</button>
+          <button class="btn btn-ghost package-details">Details</button>
+        </div>
+
+        <div class="package-more">
+          <div class="package-more-inner">
+            <h4>Good for</h4>
+            <p>VR showcases, immersive product/brand scenes, event visuals, modern website hero loops.</p>
+            <h4>Optional add-ons</h4>
+            <p>Longer duration, higher resolution, additional loop versions, sound design.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2) 3D PRODUCT + FDM PRINT -->
+      <article class="package-card" data-package="fdm" data-price="1490">
+        <div class="package-top">
+          <div class="package-badge">Product</div>
+          <h3>3D Product + FDM Print</h3>
+          <p class="package-sub">From 3D model to a real object — designed and printed with FDM.</p>
+        </div>
+
+        <div class="package-price">
+          <span class="price">CHF 1490</span>
+          <span class="price-note">from</span>
+        </div>
+
+        <ul class="package-list">
+          <li>Product modeling (or cleanup of your existing model)</li>
+          <li>Print optimization (tolerances + stability)</li>
+          <li>FDM 3D print (prototype) included</li>
+          <li>Delivery: STL/3MF + 3–5 preview renders</li>
+        </ul>
+
+        <div class="package-actions">
+          <button class="btn btn-primary package-select">Select</button>
+          <button class="btn btn-ghost package-details">Details</button>
+        </div>
+
+        <div class="package-more">
+          <div class="package-more-inner">
+            <h4>Good for</h4>
+            <p>Prototype parts, product concepts, custom components, small tools, test models.</p>
+            <h4>Optional add-ons</h4>
+            <p>Multiple print iterations, different materials/colors, stronger infill, packaging-ready renders, small batch printing.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3) CUSTOM / ADVANCED -->
+      <article class="package-card" data-package="custom" data-price="2790">
+        <div class="package-top">
+          <div class="package-badge">Cinematic</div>
+          <h3>Custom 3D Project (Advanced)</h3>
+          <p class="package-sub">Tailored 3D solution — animation, simulation, product storytelling or complex scenes.</p>
+        </div>
+
+        <div class="package-price">
+          <span class="price">CHF 2790</span>
+          <span class="price-note">from</span>
+        </div>
+
+        <ul class="package-list">
+          <li>Concept + scope definition</li>
+          <li>Storyboard / shot plan (if needed)</li>
+          <li>Advanced lighting + camera work</li>
+          <li>Delivery: 4K (MP4) + project-ready assets (as defined)</li>
+        </ul>
+
+        <div class="package-actions">
+          <button class="btn btn-primary package-select">Select</button>
+          <button class="btn btn-ghost package-details">Details</button>
+        </div>
+
+        <div class="package-more">
+          <div class="package-more-inner">
+            <h4>Good for</h4>
+            <p>Brand animations, campaign visuals, complex product storytelling, feature-heavy 3D work.</p>
+            <h4>Optional add-ons</h4>
+            <p>Full sound design, voiceover, simulations (smoke/liquid/cloth), multiple edits, longer duration, additional deliverables.</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- NEXT STEP -->
+    <div class="next-step" id="nextStep">
+      <div class="next-step-left">
+        <div class="next-step-label">Selected Package</div>
+        <h3 id="selectedTitle">Select a package above</h3>
+        <p id="selectedCopy">
+          After selecting, continue to contact and describe your idea, references and timeline.
+        </p>
+
+        <div class="next-step-meta" id="selectedMeta" style="display:none;">
+          <div class="meta-item">
+            <span class="meta-k">Estimated price</span>
+            <span class="meta-v" id="selectedPrice">—</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-k">Typical timeline</span>
+            <span class="meta-v">Project-based</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="next-step-right">
+        <a id="ctaContact" href="contact.html" class="btn btn-primary btn-wide">Continue to Contact</a>
+        <a id="ctaMail" href="#" class="btn btn-ghost btn-wide">Email inquiry</a>
+        <p class="next-step-note">
+          Complexity, style and duration can change the final price — we’ll define scope together.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="service-section">
+  <div class="service-wrap">
+
+    <div class="section-head">
+      <h2>FAQ</h2>
+      <p>Common questions about 3D animation & 3D product projects.</p>
+    </div>
+
+    <div class="faq">
+      <div class="faq-item">
+        <button class="faq-q"><span>Do I need to provide a 3D model?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>No. If you don’t have one, I can model it — depending on complexity.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q"><span>Can you deliver print-ready files?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Yes — for FDM printing I can deliver STL/3MF and optimize geometry for stable prints.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q"><span>What will I receive at the end?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Depending on the package: MP4 videos, preview renders, and/or print-ready files (STL/3MF).</p></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- FOOTER (identisch) -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-left">
+      <h3>TIMO ALEJANDRO STEINER</h3>
+      <p>Wildlife & Nature Visuals – Capturing the untamed beauty of Africa.</p>
+    </div>
+    <div class="footer-right">
+      <a href="https://www.youtube.com/@timoalejandrosteiner" target="_blank" class="social-link">Youtube</a>
+      <a href="https://www.tiktok.com/@madikwe.mp4" target="_blank" class="social-link">TikTok</a>
+      <a href="https://www.instagram.com/timosteiner10" target="_blank" class="social-link">Instagram</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Timo Alejandro Steiner. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // PACKAGE + FAQ LOGIC (gleich wie Content)
+  const grid = document.getElementById("packageGrid");
+  const nextStep = document.getElementById("nextStep");
+  const selectedTitle = document.getElementById("selectedTitle");
+  const selectedPrice = document.getElementById("selectedPrice");
+  const selectedMeta = document.getElementById("selectedMeta");
+  const ctaMail = document.getElementById("ctaMail");
+
+  grid.addEventListener("click", e => {
+    const selectBtn = e.target.closest(".package-select");
+    const detailsBtn = e.target.closest(".package-details");
+
+    if(selectBtn){
+      const card = selectBtn.closest(".package-card");
+      document.querySelectorAll(".package-card").forEach(c => c.classList.remove("active"));
+      card.classList.add("active");
+
+      selectedTitle.textContent = card.querySelector("h3").textContent;
+      selectedPrice.textContent = "CHF " + card.dataset.price;
+      selectedMeta.style.display = "grid";
+
+      ctaMail.href = "mailto:timo.steiner98@gmail.com?subject=3D Animation Inquiry";
+      nextStep.classList.add("visible");
+      nextStep.scrollIntoView({ behavior: "smooth" });
+    }
+
+    if(detailsBtn){
+      detailsBtn.closest(".package-card").classList.toggle("open");
+    }
+  });
+
+  document.querySelectorAll(".faq-q").forEach(q => {
+    q.addEventListener("click", () => {
+      q.closest(".faq-item").classList.toggle("open");
+    });
+  });
+</script>
+
+</body>
+</html>
