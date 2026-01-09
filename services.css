@@ -1,0 +1,212 @@
+/* nutzt den selben Baukasten wie deine Service-Seiten */
+@import url("content.css");
+
+/* --- Hero --- */
+.services-hero{
+  position: relative;
+  min-height: 80vh;
+  background: #000;
+  display: flex;
+  align-items: center;
+  padding: 160px 7% 70px;
+  overflow: hidden;
+}
+
+.services-hero-inner{
+  max-width: 980px;
+  position: relative;
+  z-index: 2;
+}
+
+.services-kicker{
+  display: inline-block;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.75);
+}
+
+.services-hero h1{
+  font-size: 90px;
+  line-height: 0.9;
+  margin: 0 0 22px 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #F2A900;
+  font-weight: 900;
+  mix-blend-mode: screen;
+}
+
+.services-hero p{
+  font-size: 18px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.78);
+  max-width: 760px;
+  margin: 0 0 26px 0;
+}
+
+.services-hero-actions{
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.services-glow{
+  position: absolute;
+  right: -180px;
+  top: 50%;
+  width: 520px;
+  height: 520px;
+  transform: translateY(-50%);
+  background: radial-gradient(circle, rgba(242,169,0,0.22), rgba(242,169,0,0.0) 60%);
+  filter: blur(6px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* --- Section --- */
+.services-section{
+  width: 100%;
+  background: #000;
+  padding: 90px 7% 110px;
+  position: relative;
+  z-index: 10;
+}
+
+.services-wrap{
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+.services-head{
+  margin-bottom: 36px;
+}
+
+.services-head h2{
+  font-size: 46px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin: 0 0 12px 0;
+}
+
+.services-head p{
+  margin: 0;
+  color: rgba(255,255,255,0.78);
+  font-size: 18px;
+  line-height: 1.7;
+  max-width: 900px;
+}
+
+/* --- Grid Cards --- */
+.services-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.service-card{
+  background: #0b0b0b;
+  border-radius: 22px;
+  padding: 24px;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.22);
+  border: 1px solid rgba(255,255,255,0.06);
+  text-decoration: none;
+  color: #fff;
+  display: grid;
+  gap: 18px;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.service-card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 14px 45px rgba(0,0,0,0.34);
+  border-color: rgba(242,169,0,0.28);
+}
+
+.service-tag{
+  display: inline-flex;
+  width: fit-content;
+  background: rgba(242,169,0,0.14);
+  border: 1px solid rgba(242,169,0,0.22);
+  color: #F2A900;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.service-card h3{
+  margin: 0 0 10px 0;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+  line-height: 1.25;
+}
+
+.service-card p{
+  margin: 0;
+  color: rgba(255,255,255,0.72);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.service-bottom{
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 14px;
+}
+
+.service-cta{
+  color: rgba(242,169,0,0.95);
+  letter-spacing: 0.6px;
+  font-size: 13px;
+}
+
+/* --- CTA Panel --- */
+.services-cta-panel{
+  margin-top: 26px;
+  background: #0b0b0b;
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 12px 45px rgba(0,0,0,0.28);
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 22px;
+  padding: 26px;
+}
+
+.services-cta-panel h3{
+  margin: 0 0 10px 0;
+  font-size: 22px;
+  letter-spacing: 0.4px;
+}
+
+.services-cta-panel p{
+  margin: 0;
+  color: rgba(255,255,255,0.74);
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.services-cta-right{
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1100px){
+  .services-hero h1{ font-size: 70px; }
+  .services-grid{ grid-template-columns: repeat(2, 1fr); }
+  .services-cta-panel{ grid-template-columns: 1fr; }
+}
+
+@media (max-width: 650px){
+  .services-hero{
+    padding: 140px 6% 60px;
+    min-height: 70vh;
+  }
+  .services-hero h1{ font-size: 52px; }
+  .services-section{ padding: 70px 6% 90px; }
+  .services-head h2{ font-size: 34px; }
+  .services-grid{ grid-template-columns: 1fr; }
+}
