@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="contact.css">
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <img src="7d428427-a38f-4090-9970-3bd03c3e9059.png" alt="Timo Alejandro Steiner Logo">
+  </div>
+
+ <nav class="main-nav">
+  <ul class="nav-links">
+    <li><a href="index.html">HOME 🏠</a></li>
+    <li><a href="about.html">ABOUT 🙋🏻‍♂️</a></li>
+    <li><a href="visuals.html">VISUALS 🎞️</a></li>
+    <li><a href="services.html">SERVICES 🖥️</a></li>
+    <li><a href="contact.html">CONTACT ✉️</a></li>
+  </ul>
+
+  <!-- MEGA MENU (eine Einheit) -->
+ <div class="mega-menu">
+  <div class="mega-col mega-image">
+    <img src="header.png" alt="Mega Menu Visual">
+  </div>
+
+  <div class="mega-col">
+    <a href="about.html">About Me</a>
+    <a href="work.html">Work Experience</a>
+    <a href="university.html">University Background</a>
+    <a href="equipment.html">Equipment</a>
+  </div>
+
+  <div class="mega-col">
+    <a href="visuals.html">African Animals</a>
+    <a href="photography.html">Photography Styles</a>
+    <a href="places.html">Places</a>
+    <a href="vlog.html">Vlog</a>
+  </div>
+
+  <div class="mega-col">
+    <a href="content.html">Content Production</a>
+    <a href="social.html">Social Media Management</a>
+    <a href="web.html">Websites / Apps</a>
+    <a href="3d.html">3D Animation</a>
+    <a href="commercial.html">Commercial / Marketing</a>
+    <a href="prints.html">Prints & Licensing</a>
+    <a href="workshop.html">Workshops / Coaching</a>
+  </div>
+
+  <div class="mega-col empty"></div>
+</div>
+
+</nav>
+
+</header>
+
+<!-- HERO -->
+<section class="contact-hero">
+  <div class="contact-hero-inner">
+    <div class="contact-kicker">LET’S TALK</div>
+    <h1>CONTACT</h1>
+    <p>
+      Tell me what you’re working on — I’ll get back to you with a clear next step.
+      You can send a message, request a quote, or ask a quick question.
+    </p>
+
+    <div class="contact-quick">
+      <a class="btn btn-primary" href="#contactForm">Send Message</a>
+      <a class="btn btn-ghost" href="mailto:timo.steiner98@gmail.com?subject=Inquiry%20via%20Website">Email</a>
+    </div>
+  </div>
+
+  <div class="contact-glow" aria-hidden="true"></div>
+</section>
+
+<!-- MAIN -->
+<section class="contact-section">
+  <div class="contact-wrap">
+
+    <div class="contact-grid">
+
+      <!-- FORM -->
+      <div class="contact-card" id="contactForm">
+        <h2>Message</h2>
+        <p class="muted">
+          Fill out the form and I’ll reply as soon as possible. The more details you provide,
+          the better I can estimate scope and pricing.
+        </p>
+
+        <!-- NOTE:
+             This is a frontend-only form. If you want actual sending, you need a backend (PHP) or a service.
+             For now it opens a mailto with the filled details. -->
+        <form class="form" id="inquiryForm">
+          <div class="row">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Your name" required>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@email.com" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="service">Service</label>
+            <select id="service" name="service">
+              <option value="">Select a service (optional)</option>
+              <option value="Content Production">Content Production</option>
+              <option value="Social Media Management">Social Media Management</option>
+              <option value="Websites / Apps">Websites / Apps</option>
+              <option value="3D Animation">3D Animation</option>
+              <option value="Commercial / Marketing">Commercial / Marketing</option>
+              <option value="Prints & Licensing">Prints & Licensing</option>
+              <option value="Workshops / Coaching">Workshops / Coaching</option>
+            </select>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="budget">Budget (optional)</label>
+              <select id="budget" name="budget">
+                <option value="">Choose…</option>
+                <option value="Under CHF 500">Under CHF 500</option>
+                <option value="CHF 500–1'000">CHF 500–1'000</option>
+                <option value="CHF 1'000–2'500">CHF 1'000–2'500</option>
+                <option value="CHF 2'500+">CHF 2'500+</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="timeline">Timeline (optional)</label>
+              <select id="timeline" name="timeline">
+                <option value="">Choose…</option>
+                <option value="ASAP">ASAP</option>
+                <option value="1–2 weeks">1–2 weeks</option>
+                <option value="This month">This month</option>
+                <option value="Flexible">Flexible</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="7" placeholder="Tell me about your project…" required></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Send Inquiry</button>
+            <button type="button" class="btn btn-ghost" id="resetBtn">Reset</button>
+          </div>
+
+          <p class="tiny muted">
+            This form opens your email client with a prefilled message (no backend needed).
+          </p>
+        </form>
+      </div>
+
+      <!-- INFO -->
+      <div class="contact-card">
+        <h2>Details</h2>
+        <p class="muted">Prefer direct contact? Use the options below.</p>
+
+        <div class="info-list">
+          <div class="info-item">
+            <div class="info-k">Email</div>
+            <div class="info-v"><a href="mailto:timo.steiner98@gmail.com">timo.steiner98@gmail.com</a></div>
+          </div>
+          <div class="info-item">
+            <div class="info-k">Location</div>
+            <div class="info-v">Switzerland (projects by arrangement)</div>
+          </div>
+          <div class="info-item">
+            <div class="info-k">Response</div>
+            <div class="info-v">Typically within 24–72h</div>
+          </div>
+        </div>
+
+        <div class="mini-cta">
+          <h3>What helps me reply faster</h3>
+          <ul>
+            <li>Which service you need</li>
+            <li>Reference style / examples</li>
+            <li>Timeline + deliverables</li>
+            <li>Budget range (optional)</li>
+          </ul>
+        </div>
+
+<div class="social-box">
+  <a href="https://www.youtube.com/@timoalejandrosteiner" class="btn btn-ghost btn-wide">YouTube</a>
+  <a href="https://www.tiktok.com/@madikwe.mp4" class="btn btn-ghost btn-wide">TikTok</a>
+  <a href="https://www.instagram.com/timosteiner10" class="btn btn-ghost btn-wide">Instagram</a>
+</div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- FOOTER (identisch) -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-left">
+      <h3>TIMO ALEJANDRO STEINER</h3>
+      <p>Wildlife & Nature Visuals – Capturing the untamed beauty of Africa.</p>
+    </div>
+    <div class="footer-right">
+      <a href="https://www.youtube.com/@timoalejandrosteiner" target="_blank" class="social-link">Youtube</a>
+      <a href="https://www.tiktok.com/@madikwe.mp4" target="_blank" class="social-link">TikTok</a>
+      <a href="https://www.instagram.com/timosteiner10" target="_blank" class="social-link">Instagram</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Timo Alejandro Steiner. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Prefill from query string: contact.html?service=...
+  const params = new URLSearchParams(window.location.search);
+  const serviceParam = params.get("service");
+  if(serviceParam){
+    const serviceSelect = document.getElementById("service");
+    // Set if exists, else create option
+    let found = false;
+    [...serviceSelect.options].forEach(o => {
+      if(o.value === serviceParam) found = true;
+    });
+    if(!found && serviceParam.trim()){
+      const opt = document.createElement("option");
+      opt.value = serviceParam;
+      opt.textContent = serviceParam;
+      serviceSelect.appendChild(opt);
+    }
+    serviceSelect.value = serviceParam;
+  }
+
+  // Form -> mailto (no backend required)
+  const form = document.getElementById("inquiryForm");
+  const resetBtn = document.getElementById("resetBtn");
+
+  resetBtn.addEventListener("click", () => form.reset());
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const service = document.getElementById("service").value.trim();
+    const budget = document.getElementById("budget").value.trim();
+    const timeline = document.getElementById("timeline").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    const subject = encodeURIComponent(
+      (service ? service + " — " : "") + "Inquiry via Website"
+    );
+
+    const body = encodeURIComponent(
+`Hi Timo,
+
+Name: ${name}
+Email: ${email}
+Service: ${service || "—"}
+Budget: ${budget || "—"}
+Timeline: ${timeline || "—"}
+
+Message:
+${message}
+
+Best regards,
+${name}`
+    );
+
+    window.location.href = `mailto:timo.steiner98@gmail.com?subject=${subject}&body=${body}`;
+  });
+</script>
+
+</body>
+</html>

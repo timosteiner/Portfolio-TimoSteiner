@@ -1,0 +1,259 @@
+/* Reuse the same base styles used on your service pages */
+@import url("content.css");
+
+/* --- Contact Hero --- */
+.contact-hero{
+  position: relative;
+  min-height: 85vh;
+  background: #000;
+  display: flex;
+  align-items: center;
+  padding: 160px 7% 80px;
+  overflow: hidden;
+}
+
+.contact-hero-inner{
+  max-width: 980px;
+  position: relative;
+  z-index: 2;
+}
+
+.contact-kicker{
+  display: inline-block;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.75);
+}
+
+.contact-hero h1{
+  font-size: 90px;
+  line-height: 0.9;
+  margin: 0 0 22px 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #F2A900;
+  font-weight: 900;
+  mix-blend-mode: screen;
+}
+
+.contact-hero p{
+  font-size: 18px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.78);
+  max-width: 760px;
+  margin: 0 0 26px 0;
+}
+
+.contact-quick{
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.contact-glow{
+  position: absolute;
+  right: -180px;
+  top: 50%;
+  width: 520px;
+  height: 520px;
+  transform: translateY(-50%);
+  background: radial-gradient(circle, rgba(242,169,0,0.22), rgba(242,169,0,0.0) 60%);
+  filter: blur(6px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* --- Main Contact Section --- */
+.contact-section{
+  width: 100%;
+  background: #000;
+  padding: 90px 7% 110px;
+  position: relative;
+  z-index: 10;
+}
+
+.contact-wrap{
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+.contact-grid{
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 22px;
+
+  /* WICHTIG: statt "start" -> "stretch", damit beide Cards gleich hoch werden */
+  align-items: stretch;
+}
+
+
+.contact-card{
+  background: #0b0b0b;
+  border-radius: 22px;
+  padding: 26px;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.22);
+  border: 1px solid rgba(255,255,255,0.06);
+
+  /* WICHTIG: Card darf sich auf volle Grid-Höhe strecken */
+  height: 100%;
+
+  /* Optional aber sauber: Innenlayout stabil */
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-card h2{
+  margin: 0 0 10px 0;
+  font-size: 28px;
+  letter-spacing: 0.6px;
+}
+
+.muted{
+  color: rgba(255,255,255,0.74);
+  line-height: 1.7;
+}
+
+.tiny{
+  font-size: 13px;
+  margin-top: 14px;
+}
+
+/* --- Form --- */
+.form{
+  margin-top: 18px;
+}
+
+.row{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.field{
+  display: grid;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+label{
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.70);
+}
+
+input, select, textarea{
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.04);
+  color: #fff;
+  padding: 12px 12px;
+  outline: none;
+  font-size: 14px;
+}
+
+input::placeholder,
+textarea::placeholder{
+  color: rgba(255,255,255,0.45);
+}
+
+textarea{
+  resize: vertical;
+  min-height: 140px;
+}
+
+input:focus, select:focus, textarea:focus{
+  border-color: rgba(242,169,0,0.45);
+  box-shadow: 0 0 0 4px rgba(242,169,0,0.08);
+}
+
+.form-actions{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+/* --- Info side --- */
+.info-list{
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+  margin-bottom: 22px;
+}
+
+.info-item{
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 12px 14px;
+}
+
+.info-k{
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 6px;
+}
+
+.info-v{
+  font-size: 14px;
+  color: #fff;
+  letter-spacing: 0.3px;
+}
+
+.info-v a{
+  color: #F2A900;
+  text-decoration: none;
+}
+
+.info-v a:hover{
+  opacity: 0.85;
+}
+
+.mini-cta{
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 18px;
+  margin-top: 10px;
+}
+
+.mini-cta h3{
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.82);
+}
+
+.mini-cta ul{
+  margin: 0;
+  padding-left: 18px;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+.social-box{
+  margin-top: 18px;
+  display: grid;
+  gap: 10px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1100px){
+  .contact-hero h1{ font-size: 70px; }
+  .contact-grid{ grid-template-columns: 1fr; }
+}
+
+@media (max-width: 650px){
+  .contact-hero{
+    padding: 140px 6% 70px;
+    min-height: 75vh;
+  }
+  .contact-hero h1{ font-size: 52px; }
+  .contact-section{ padding: 70px 6% 90px; }
+  .row{ grid-template-columns: 1fr; }
+}

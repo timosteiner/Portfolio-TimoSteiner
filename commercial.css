@@ -1,0 +1,712 @@
+/* === HEADER (wie Startseite) === */
+/* ================================
+   HEADER
+================================ */
+
+header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 20;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 25px 85px;
+  background: transparent;
+}
+
+/* Logo */
+.logo img {
+  height: 110px;
+  width: auto;
+}
+
+/* ================================
+   NAV WRAPPER
+================================ */
+
+.main-nav {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  --menu-w: min(860px, calc(100vw - 140px));
+}
+
+/* 🔹 Hover-Bridge (wichtig!) */
+.main-nav::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: var(--menu-w);
+  height: 22px;
+  background: transparent;
+}
+
+/* ================================
+   TOP NAV LINKS
+================================ */
+
+.nav-links {
+  list-style: none;
+  width: var(--menu-w);
+
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  text-align: center;
+}
+
+.nav-links li a {
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+
+  font-size: 17px;
+  letter-spacing: 1px;
+  font-weight: 400;
+  text-transform: uppercase;
+
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.45);
+  transition: color 0.25s ease;
+}
+
+.nav-links li a:hover {
+  color: #ddd;
+}
+
+/* ================================
+   MEGA MENU
+================================ */
+
+.mega-menu {
+  position: absolute;
+  top: calc(100% + 2px); /* 👈 KEINE Hover-Lücke */
+  right: 0;
+  width: var(--menu-w);
+
+  min-height: 430px;
+
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+
+  background: rgba(0, 0, 0, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.35);
+
+  padding: 26px 28px;
+
+  --mega-shift-x: 18px;
+
+  opacity: 0;
+  transform: translate(var(--mega-shift-x), 10px);
+  pointer-events: none;
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+  z-index: 999;
+}
+
+/* 🔹 Öffnet Menü stabil */
+.main-nav:hover .mega-menu {
+  opacity: 1;
+  transform: translate(var(--mega-shift-x), 0);
+  pointer-events: auto;
+}
+
+/* ================================
+   MEGA MENU COLUMNS
+================================ */
+
+.mega-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 10px 18px;
+}
+
+.mega-col a {
+  color: rgba(255, 255, 255, 0.92);
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+
+  padding: 4px 2px;
+  transition: all 0.2s ease;
+}
+
+.mega-col a:hover {
+  color: #fff;
+  transform: translateX(4px);
+}
+
+/* Leere Spalte */
+.mega-col.empty {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ================================
+   MEGA MENU IMAGE COLUMN
+================================ */
+
+.mega-col.mega-image {
+  position: relative;
+  pointer-events: none;
+  padding: 0;
+}
+
+.mega-col.mega-image img {
+  position: absolute;
+  left: -280px;
+  bottom: -105px;
+  width: 680px;
+  height: auto;
+
+  object-fit: contain;
+  filter: drop-shadow(0 20px 34px rgba(0, 0, 0, 0.45));
+  opacity: 0.95;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 900px) {
+  header {
+    padding: 20px;
+  }
+
+  .main-nav {
+    --menu-w: calc(100vw - 40px);
+  }
+
+  .mega-menu {
+    min-height: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .mega-col.empty,
+  .mega-col.mega-image {
+    display: none;
+  }
+}
+
+
+/* Smooth Scroll */
+html { scroll-behavior: smooth; }
+
+/* =========================================================
+   PAGE BASE
+========================================================= */
+
+body{
+  margin: 0;
+  padding: 0;
+  background: #000;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Optional: Buttons (falls nicht schon in style.css vorhanden)
+   -> Du kannst diese ggf. löschen, wenn du schon .btn global hast */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-size: 13px;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.18);
+  transition: transform .2s ease, background .2s ease, border-color .2s ease;
+  background: transparent;
+  color: #fff;
+}
+
+.btn:hover{ transform: translateY(-1px); }
+.btn-primary{
+  background: #F2A900;
+  border-color: rgba(242,169,0,0.55);
+  color: #000;
+  font-weight: 700;
+}
+.btn-primary:hover{ border-color: rgba(242,169,0,0.85); }
+.btn-ghost{
+  background: rgba(255,255,255,0.06);
+}
+.btn-wide{ width: 100%; }
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.service-hero{
+  position: relative;
+  min-height: 92vh;
+  background: #000;
+  display: flex;
+  align-items: center;
+  padding: 160px 7% 90px;
+  overflow: hidden;
+}
+
+.service-hero-inner{
+  max-width: 980px;
+  position: relative;
+  z-index: 2;
+}
+
+.service-hero-kicker{
+  display: inline-block;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.75);
+}
+
+.service-hero h1{
+  font-size: 90px;
+  line-height: 0.9;
+  margin: 0 0 22px 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #F2A900;
+  font-weight: 900;
+  mix-blend-mode: screen;
+}
+
+.service-hero p{
+  font-size: 18px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.78);
+  max-width: 760px;
+  margin: 0 0 26px 0;
+}
+
+.service-hero-actions{
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.service-hero-glow{
+  position: absolute;
+  right: -180px;
+  top: 50%;
+  width: 520px;
+  height: 520px;
+  transform: translateY(-50%);
+  background: radial-gradient(circle, rgba(242,169,0,0.22), rgba(242,169,0,0.0) 60%);
+  filter: blur(6px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+.service-section{
+  width: 100%;
+  background: #000;
+  padding: 110px 7%;
+  position: relative;
+  z-index: 10;
+}
+
+.service-section-tight{
+  padding-top: 70px;
+}
+
+.service-wrap{
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+.service-intro h2,
+.section-head h2{
+  font-size: 46px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin: 0 0 16px 0;
+}
+
+.service-intro p,
+.section-head p{
+  font-size: 18px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.78);
+  max-width: 980px;
+  margin: 0;
+}
+
+.section-head{
+  margin-bottom: 40px;
+}
+
+/* FACTS */
+.fact-grid{
+  margin-top: 34px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.fact-card{
+  background: #0b0b0b;
+  border-radius: 22px;
+  padding: 22px 22px 24px;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.22);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.fact-card h3{
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  letter-spacing: 0.6px;
+  color: #fff;
+}
+
+.fact-card p{
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.72);
+}
+
+/* =========================================================
+   PACKAGES
+========================================================= */
+
+.package-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.package-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  background: #0b0b0b;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.22);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.package-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 45px rgba(0,0,0,0.34);
+  border-color: rgba(242,169,0,0.28);
+}
+
+.package-card.active {
+  border-color: rgba(242,169,0,0.55);
+  box-shadow: 0 16px 55px rgba(0,0,0,0.40);
+}
+
+.package-top {
+  padding: 24px 22px 0 22px;
+}
+
+.package-badge{
+  display: inline-flex;
+  background: rgba(242,169,0,0.14);
+  border: 1px solid rgba(242,169,0,0.22);
+  color: #F2A900;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+}
+
+.package-card h3{
+  margin: 0 0 10px 0;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+  line-height: 1.25;
+}
+
+.package-sub{
+  margin: 0 0 18px 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.72);
+}
+
+.package-price{
+  padding: 0 22px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.price{
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  color: #fff;
+}
+
+.price-note{
+  font-size: 12px;
+  color: rgba(255,255,255,0.65);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.package-list{
+  padding: 0 22px;
+  margin: 0 0 18px 0;
+  list-style: none;
+}
+
+.package-list li{
+  padding-left: 18px;
+  margin: 10px 0;
+  position: relative;
+  color: rgba(255,255,255,0.75);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.package-list li::before{
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: rgba(242,169,0,0.75);
+}
+
+.package-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 0 22px 22px 22px;
+  margin-top: auto; /* Das sorgt dafür, dass die Buttons nach unten rutschen */
+}
+
+.package-more{
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .35s ease;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.package-card.open .package-more{
+  max-height: 260px;
+}
+
+.package-more-inner{
+  padding: 18px 22px 22px;
+}
+
+.package-more-inner h4{
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.82);
+}
+
+.package-more-inner p{
+  margin: 0 0 14px 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.70);
+}
+
+/* =========================================================
+   NEXT STEP PANEL
+========================================================= */
+
+.next-step{
+  margin-top: 28px;
+  background: #0b0b0b;
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 12px 45px rgba(0,0,0,0.28);
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 26px;
+  padding: 26px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .35s ease, transform .35s ease;
+}
+
+.next-step.visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.next-step-label{
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.next-step h3{
+  margin: 0 0 10px 0;
+  font-size: 22px;
+  letter-spacing: 0.4px;
+}
+
+.next-step p{
+  margin: 0 0 14px 0;
+  color: rgba(255,255,255,0.74);
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.next-step-meta{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.meta-item{
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 12px 14px;
+}
+
+.meta-k{
+  display: block;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.65);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.meta-v{
+  font-size: 14px;
+  color: #fff;
+  letter-spacing: 0.3px;
+}
+
+.next-step-right{
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.next-step-note{
+  font-size: 13px;
+  color: rgba(255,255,255,0.60);
+  line-height: 1.6;
+  margin-top: 2px;
+}
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+.faq{
+  display: grid;
+  gap: 12px;
+  max-width: 980px;
+}
+
+.faq-item{
+  background: #0b0b0b;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.faq-q{
+  width: 100%;
+  background: transparent;
+  border: 0;
+  color: #fff;
+  text-align: left;
+  padding: 18px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-size: 14px;
+  letter-spacing: 0.6px;
+}
+
+.faq-icon{
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.06);
+  font-size: 16px;
+}
+
+.faq-a{
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .35s ease;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.faq-a p{
+  margin: 0;
+  padding: 16px 18px 18px;
+  color: rgba(255,255,255,0.74);
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+.faq-item.open .faq-a{ max-height: 260px; }
+.faq-item.open .faq-icon{ background: rgba(242,169,0,0.14); border-color: rgba(242,169,0,0.22); color: #F2A900; }
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px){
+  .service-hero h1{ font-size: 70px; }
+  .fact-grid{ grid-template-columns: 1fr; }
+  .package-grid{ grid-template-columns: 1fr; }
+  .next-step{ grid-template-columns: 1fr; }
+}
+
+@media (max-width: 650px){
+  header{ padding: 20px 18px; }
+  nav ul{ gap: 18px; }
+  .logo img{ height: 70px; }
+
+  .service-hero{
+    padding: 140px 6% 70px;
+    min-height: 86vh;
+  }
+  .service-hero h1{ font-size: 52px; }
+  .service-section{ padding: 80px 6%; }
+}
