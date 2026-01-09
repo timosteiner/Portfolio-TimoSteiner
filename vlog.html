@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vlog</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- CSS-Dateien -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="vlog.css">
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <img src="7d428427-a38f-4090-9970-3bd03c3e9059.png" alt="Timo Alejandro Steiner Logo">
+  </div>
+
+ <nav class="main-nav">
+  <ul class="nav-links">
+    <li><a href="index.html">HOME 🏠</a></li>
+    <li><a href="about.html">ABOUT 🙋🏻‍♂️</a></li>
+    <li><a href="visuals.html">VISUALS 🎞️</a></li>
+    <li><a href="#">SERVICES 🖥️</a></li>
+    <li><a href="contact.html">CONTACT ✉️</a></li>
+  </ul>
+
+  <!-- MEGA MENU (eine Einheit) -->
+ <div class="mega-menu">
+  <div class="mega-col mega-image">
+    <img src="header.png" alt="Mega Menu Visual">
+  </div>
+
+  <div class="mega-col">
+    <a href="about.html">About Me</a>
+    <a href="work.html">Work Experience</a>
+    <a href="university.html">University Background</a>
+    <a href="equipment.html">Equipment</a>
+  </div>
+
+  <div class="mega-col">
+    <a href="visuals.html">African Animals</a>
+    <a href="photography.html">Photography Styles</a>
+    <a href="places.html">Places</a>
+    <a href="vlog.html">Vlog</a>
+  </div>
+
+  <div class="mega-col">
+    <a href="content.html">Content Production</a>
+    <a href="social.html">Social Media Management</a>
+    <a href="web.html">Websites / Apps</a>
+    <a href="3d.html">3D Animation</a>
+    <a href="commercial.html">Commercial / Marketing</a>
+    <a href="prints.html">Prints & Licensing</a>
+    <a href="workshop.html">Workshops / Coaching</a>
+  </div>
+
+  <div class="mega-col empty"></div>
+</div>
+
+</nav>
+
+</header>
+
+<section class="superglue-hero">
+
+  <div class="superglue-wall">
+
+    <!-- Linke Spalte – 4 Bilder -->
+    <div class="col left-col">
+      <img class="wall-img" src="Hintergrund/7U6A2723.JPG" alt="" loading="lazy" decoding="async">
+      <img class="wall-img" src="Hintergrund/7U6A2756.JPG" alt="" loading="lazy" decoding="async">
+      <img class="wall-img" src="Hintergrund/7U6A2762.JPG" alt="" loading="lazy" decoding="async">
+      <img class="wall-img" src="Hintergrund/7U6A2764.JPG" alt="" loading="lazy" decoding="async">
+    </div>
+
+    <!-- Mittlere Spalte – 4 Bilder -->
+    <div class="col center-col">
+      <img class="wall-img" src="Hintergrund/7U6A2823.JPG" alt="" loading="lazy" decoding="async">
+      <img class="wall-img" src="Hintergrund/7U6A2834.JPG" alt="" loading="lazy" decoding="async">
+      <img class="wall-img" src="Hintergrund/7U6A2847.JPG" alt="" loading="lazy" decoding="async">
+      <img class="wall-img" src="Hintergrund/7U6A2850.JPG" alt="" loading="lazy" decoding="async">
+    </div>
+
+    <!-- Rechte Spalte – 4 Bilder -->
+    <div class="col right-col">
+      <img class="wall-img" src="Hintergrund/7U6A2856.JPG" alt="" loading="lazy" decoding="async">
+      <img class="wall-img" src="Hintergrund/7U6A2864.JPG" alt="" loading="lazy" decoding="async">
+      <img class="wall-img" src="Hintergrund/7U6A2880.JPG" alt="" loading="lazy" decoding="async">
+      <img class="wall-img" src="Hintergrund/7U6A2883.JPG" alt="" loading="lazy" decoding="async">
+    </div>
+
+  </div>
+
+  <!-- Titel -->
+  <div class="hero-title">
+    <h1>VIDEO<br>BLOG</h1>
+  </div>
+
+</section>
+
+<!-- === VLOG SECTION (ersetzt die 4 Sections) === -->
+<section class="vlog-section">
+  <div class="vlog-wrap">
+
+    <div class="vlog-head">
+      <h2>My Vlog 📺</h2>
+      <p>
+        Here you’ll find my latest videos — watch them directly on the site or open them on YouTube.
+      </p>
+    </div>
+
+    <div class="vlog-featured">
+      <div class="vlog-player" id="vlogPlayer"></div>
+
+      <div class="vlog-featured-meta">
+        <h3 id="vlogTitle">Loading…</h3>
+        <p id="vlogDesc">Selecting the latest vlog for you.</p>
+        <div class="vlog-actions">
+          <a id="vlogYouTubeLink" class="btn" href="#" target="_blank" rel="noopener">Open on YouTube</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="vlog-grid" id="vlogGrid"></div>
+
+  </div>
+</section>
+
+<!-- VLOG SCRIPT (nur einmal am Ende der Seite) -->
+<script>
+  const vlogVideos = [
+    {
+      id: "fhEo-WX1fZo",
+      title: "Madikwe 2025 | Safari Vlog #1: Capturing Wildlife Through My Lens 🎬🦁",
+      desc: "A short description that gives context and invites people to watch."
+    }
+    // Weitere Videos später hier hinzufügen
+  ];
+
+  const player = document.getElementById("vlogPlayer");
+  const grid = document.getElementById("vlogGrid");
+  const titleEl = document.getElementById("vlogTitle");
+  const descEl = document.getElementById("vlogDesc");
+  const ytLinkEl = document.getElementById("vlogYouTubeLink");
+
+  function getThumb(id){
+    return `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+  }
+
+  function setFeatured(video){
+    if(!video) return;
+
+    player.innerHTML = `
+      <iframe
+        src="https://www.youtube.com/embed/${video.id}?rel=0&modestbranding=1"
+        title="${video.title}"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+    `;
+
+    titleEl.textContent = video.title;
+    descEl.textContent = video.desc || "";
+    ytLinkEl.href = `https://www.youtube.com/watch?v=${video.id}`;
+  }
+
+  function renderGrid(){
+    grid.innerHTML = "";
+
+    vlogVideos.forEach((video) => {
+      const card = document.createElement("div");
+      card.className = "vlog-card";
+      card.innerHTML = `
+        <div class="vlog-thumb">
+          <img src="${getThumb(video.id)}" alt="${video.title}" loading="lazy" decoding="async">
+          <div class="vlog-play-badge">▶ Watch</div>
+        </div>
+        <div class="vlog-card-body">
+          <h4>${video.title}</h4>
+          <p>${video.desc || ""}</p>
+        </div>
+      `;
+
+      card.addEventListener("click", () => {
+        setFeatured(video);
+        document.getElementById("vlogPlayer").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+
+      grid.appendChild(card);
+    });
+  }
+
+  if(vlogVideos.length){
+    setFeatured(vlogVideos[0]);
+    renderGrid();
+  }else{
+    titleEl.textContent = "No videos yet";
+    descEl.textContent = "Add your first YouTube video ID in the vlogVideos array.";
+    ytLinkEl.style.display = "none";
+  }
+</script>
+
+
+<!-- Bottom Section mit Hintergrundbild -->
+<section class="bottom-section" style="background-image: url('digital-marketing-1433427.jpg');">
+  <div class="bottom-content">
+    <p>
+      Looking to strengthen your brand’s digital presence? I support businesses and individuals with tailored marketing and commercial solutions – from strategic content creation and digital campaigns to web-based brand communication.
+    </p>
+    <a href="commercial.html" class="btn">MARKETING 📊</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-left">
+      <h3>TIMO ALEJANDRO STEINER</h3>
+      <p>Wildlife & Nature Visuals – Capturing the untamed beauty of Africa.</p>
+    </div>
+    <div class="footer-right">
+      <a href="https://www.youtube.com/@timoalejandrosteiner" target="_blank" class="social-link">Youtube</a>
+      <a href="https://www.tiktok.com/@madikwe.mp4" target="_blank" class="social-link">TikTok</a>
+      <a href="https://www.instagram.com/timosteiner10" target="_blank" class="social-link">Instagram</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Timo Alejandro Steiner. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- === BILD-ROTATION FÜR DIE WALL === -->
+<script>
+  // Alle Dateinamen im Ordner "Hintergrund"
+  const wallImageFiles = [
+    "7U6A2723.JPG",
+    "7U6A2756.JPG",
+    "7U6A2762.JPG",
+    "7U6A2764.JPG",
+    "7U6A2823.JPG",
+    "7U6A2834.JPG",
+    "7U6A2847.JPG",
+    "7U6A2850.JPG",
+    "7U6A2856.JPG",
+    "7U6A2864.JPG",
+    "7U6A2880.JPG",
+    "7U6A2883.JPG",
+    "7U6A2891.JPG",
+    "7U6A2962.JPG",
+    "7U6A3012.JPG",
+    "7U6A3020.JPG",
+    "7U6A3021.JPG",
+    "7U6A3045.JPG",
+    "7U6A3065.JPG",
+    "7U6A3097.JPG",
+    "7U6A3105.JPG",
+    "blackbackedjackal-25.jpg",
+    "blackrhino-10.jpg",
+    "blackrhino-22.jpg",
+    "blackrhino-26.jpg",
+    "buffalo-33.jpg",
+    "buffalo-36.jpg",
+    "elephant-035.jpg",
+    "elephant-083.jpg",
+    "Foto 01.02.25, 19 17 26.jpg",
+    "giraffe-16.jpg",
+    "guineafowl-2.jpg",
+    "insects-16.jpg",
+    "leo.jpg",
+    "lion-014.jpg",
+    "lion-127.jpg",
+    "lion-129.jpg",
+    "lion-178.jpg",
+    "lion-179.jpg",
+    "lion-184.jpg",
+    "lion-198.jpg",
+    "lion-206.jpg",
+    "lion-232.jpg",
+    "lion-233.jpg",
+    "lion-234.jpg",
+    "madikwe-19.jpg",
+    "madikwe-33.jpg",
+    "oryx-10.jpg",
+    "reptile-17.jpg",
+    "reptile-30.jpg",
+    "spottedhyena-09.jpg",
+    "steenbok-1.jpg",
+    "steenbok-8.jpg",
+    "warthog-3.jpg",
+    "whiterhino-20.jpg",
+    "whiterhino-30.jpg",
+    "xx-157.jpg",
+    "xx-162.jpg",
+    "xx-293.jpg",
+    "xx-295.jpg",
+    "xx-296.jpg",
+    "zebra-40.jpg",
+    "7U6A1848.JPG",
+    "7U6A2029.JPG",
+    "7U6A2093.JPG",
+    "7U6A2118.JPG",
+    "7U6A2153.JPG",
+    "7U6A2155.JPG",
+    "7U6A2264.JPG",
+    "7U6A2328.JPG",
+    "7U6A2350.JPG",
+    "7U6A2384.JPG",
+    "7U6A2392.JPG",
+    "7U6A2400.JPG",
+    "7U6A2433.JPG",
+    "7U6A2475.JPG",
+    "7U6A2545.JPG",
+    "7U6A2705.JPG"
+  ];
+
+  const basePath = "Hintergrund/";
+  const wallImgs = document.querySelectorAll(".superglue-wall img");
+
+  function getRandomImage(exclude) {
+    let candidate;
+    do {
+      candidate = wallImageFiles[Math.floor(Math.random() * wallImageFiles.length)];
+    } while (candidate === exclude);
+    return candidate;
+  }
+
+  wallImgs.forEach((img, index) => {
+    // initial befüllen (falls JS später lädt)
+    const initial = wallImageFiles[index % wallImageFiles.length];
+    img.src = basePath + initial;
+    img.dataset.current = initial;
+
+    function swapImage() {
+      const current = img.dataset.current;
+      const next = getRandomImage(current);
+
+      img.style.opacity = 0;
+
+      setTimeout(() => {
+        img.src = basePath + next;
+        img.dataset.current = next;
+        img.style.opacity = 1;
+      }, 600);
+
+      const delay = 4000 + Math.random() * 4000; // 4–8 Sekunden
+      setTimeout(swapImage, delay);
+    }
+
+    const firstDelay = 1000 + Math.random() * 2000;
+    setTimeout(swapImage, firstDelay);
+  });
+</script>
+
+</body>
+</html>
